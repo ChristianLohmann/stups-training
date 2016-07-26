@@ -7,7 +7,7 @@
   <title>reveal.js</title>
 
   <link rel="stylesheet" href="vendor/css/reveal.css">
-  <link rel="stylesheet" href="vendor/css/theme/black.css">
+  <link rel="stylesheet" href="vendor/css/theme/solarized.css">
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="vendor/lib/css/zenburn.css">
@@ -31,54 +31,63 @@
       </p>
     </section>
     <section>
-      <h1>Level 00: Dockerfile</h1>
-      <p>Create a Dockerfile for the Java app</p>
+      <section>
+        <h1>Level 00: Dockerfile</h1>
+        <p>Create a Dockerfile for the Java app</p>
+      </section>
+      <section>
+        <ul>
+          <li><a href="http://docs.stups.io/en/latest/appendix/docker-base-images.html">OpenJDK base image</a></li>
+          <li><a href="http://docs.stups.io/en/latest/user-guide/application-development.html#scm-source-json">scm-source.json</a>
+          </li>
+        </ul>
+      </section>
     </section>
     <section>
-      <ul>
-        <li><a href="http://docs.stups.io/en/latest/appendix/docker-base-images.html">OpenJDK base image</a></li>
-        <li><a href="http://docs.stups.io/en/latest/user-guide/application-development.html#scm-source-json">scm-source.json</a>
-        </li>
-      </ul>
+      <section>
+        <h1>Level 01: Pier One</h1>
+        <p>Build and push the Docker image</p>
+      </section>
+      <section>
+        <pre><code data-trim data-noescape>
+          sudo pip3 install -U stups
+          stups configure stups.zalan.do
+        </code></pre>
+      </section>
+      <section>
+        <ul>
+          <li>docker build</li>
+          <li>pierone login</li>
+          <li>docker push</li>
+        </ul>
+      </section>
     </section>
     <section>
-      <h1>Level 01: Pier One</h1>
-      <p>Build and push the Docker image</p>
+      <section>
+        <h1>Level 02: Kio</h1>
+        <p>Register your app in Kio</p>
+      </section>
+      <section>
+        <ul>
+          <li><a href="https://yourturn.stups.zalan.do/">YOUR TURN</a></li>
+          <li>Kio CLI</li>
+          <li>mint bucket</li>
+        </ul>
+      </section>
     </section>
     <section>
-                    <pre>
-sudo pip3 install -U stups
-stups configure stups.zalan.do</pre>
-    </section>
-    <section>
-      <ul>
-        <li>docker build</li>
-        <li>pierone login</li>
-        <li>docker push</li>
-      </ul>
-    </section>
-    <section>
-      <h1>Level 02: Kio</h1>
-      <p>Register your app in Kio</p>
-    </section>
-    <section>
-      <ul>
-        <li><a href="https://yourturn.stups.zalan.do/">YOUR TURN</a></li>
-        <li>Kio CLI</li>
-        <li>mint bucket</li>
-      </ul>
-    </section>
-    <section>
-      <h1>Level 03: Senza</h1>
-      <p>Create Senza definition</p>
-    </section>
-    <section>
-      <ul>
-        <li>immutable stack</li>
-        <li>senza init</li>
-        <li>ELB</li>
-        <li>Security Groups</li>
-      </ul>
+      <section>
+        <h1>Level 03: Senza</h1>
+        <p>Create Senza definition</p>
+      </section>
+      <section>
+        <ul>
+          <li>immutable stack</li>
+          <li>senza init</li>
+          <li>ELB</li>
+          <li>Security Groups</li>
+        </ul>
+      </section>
     </section>
   </div>
 </div>
@@ -93,10 +102,10 @@ stups configure stups.zalan.do</pre>
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'vendor/plugin/markdown/marked.js' },
+					{ src: 'vendor/plugin/markdown/markdown.js' },
+					{ src: 'vendor/plugin/notes/notes.js', async: true },
+					{ src: 'vendor/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
 
