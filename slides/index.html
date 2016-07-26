@@ -1,89 +1,92 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+  <title>reveal.js</title>
 
-		<link rel="stylesheet" href="vendor/css/reveal.css">
-		<link rel="stylesheet" href="vendor/css/theme/black.css">
+  <link rel="stylesheet" href="vendor/css/reveal.css">
+  <link rel="stylesheet" href="vendor/css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="vendor/lib/css/zenburn.css">
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="vendor/lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
+  <!-- Printing and PDF exports -->
+  <script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'vendor/css/print/pdf.css' : 'vendor/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-                    <h1>STUPS Workshop</h1>
-                    <p><a href="https://github.bus.zalan.do/stups/stups-training">https://github.bus.zalan.do/stups/stups-training</a></p>
-                </section>
-				<section>
-                    <h1>Level 00: Dockerfile</h1>
-                    <p>Create a Dockerfile for the Java app</p>
-                </section>
-				<section>
-                    <ul>
-                        <li><a href="http://docs.stups.io/en/latest/appendix/docker-base-images.html">OpenJDK base image</a></li>
-                        <li><a href="http://docs.stups.io/en/latest/user-guide/application-development.html#scm-source-json">scm-source.json</a></li>
-                    </ul>
-                </section>
-				<section>
-                    <h1>Level 01: Pier One</h1>
-                    <p>Build and push the Docker image</p>
-                </section>
-				<section>
+
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section>
+      <h1>STUPS Workshop</h1>
+      <p><a href="https://github.bus.zalan.do/stups/stups-training">https://github.bus.zalan.do/stups/stups-training</a>
+      </p>
+    </section>
+    <section>
+      <h1>Level 00: Dockerfile</h1>
+      <p>Create a Dockerfile for the Java app</p>
+    </section>
+    <section>
+      <ul>
+        <li><a href="http://docs.stups.io/en/latest/appendix/docker-base-images.html">OpenJDK base image</a></li>
+        <li><a href="http://docs.stups.io/en/latest/user-guide/application-development.html#scm-source-json">scm-source.json</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h1>Level 01: Pier One</h1>
+      <p>Build and push the Docker image</p>
+    </section>
+    <section>
                     <pre>
 sudo pip3 install -U stups
 stups configure stups.zalan.do</pre>
-                </section>
-				<section>
-                    <ul>
-                        <li>docker build</li>
-                        <li>pierone login</li>
-                        <li>docker push</li>
-                    </ul>
-                </section>
-				<section>
-                    <h1>Level 02: Kio</h1>
-                    <p>Register your app in Kio</p>
-                </section>
-				<section>
-                    <ul>
-                        <li><a href="https://yourturn.stups.zalan.do/">YOUR TURN</a></li>
-                        <li>Kio CLI</li>
-                        <li>mint bucket</li>
-                    </ul>
-                </section>
-				<section>
-                    <h1>Level 03: Senza</h1>
-                    <p>Create Senza definition</p>
-                </section>
-				<section>
-                    <ul>
-                        <li>immutable stack</li>
-                        <li>senza init</li>
-                        <li>ELB</li>
-                        <li>Security Groups</li>
-                    </ul>
-                </section>
-			</div>
-		</div>
+    </section>
+    <section>
+      <ul>
+        <li>docker build</li>
+        <li>pierone login</li>
+        <li>docker push</li>
+      </ul>
+    </section>
+    <section>
+      <h1>Level 02: Kio</h1>
+      <p>Register your app in Kio</p>
+    </section>
+    <section>
+      <ul>
+        <li><a href="https://yourturn.stups.zalan.do/">YOUR TURN</a></li>
+        <li>Kio CLI</li>
+        <li>mint bucket</li>
+      </ul>
+    </section>
+    <section>
+      <h1>Level 03: Senza</h1>
+      <p>Create Senza definition</p>
+    </section>
+    <section>
+      <ul>
+        <li>immutable stack</li>
+        <li>senza init</li>
+        <li>ELB</li>
+        <li>Security Groups</li>
+      </ul>
+    </section>
+  </div>
+</div>
 
-		<script src="vendor/lib/js/head.min.js"></script>
-		<script src="vendor/js/reveal.js"></script>
+<script src="vendor/lib/js/head.min.js"></script>
+<script src="vendor/js/reveal.js"></script>
 
-		<script>
+<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
@@ -96,6 +99,7 @@ stups configure stups.zalan.do</pre>
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
-		</script>
-	</body>
+
+</script>
+</body>
 </html>
