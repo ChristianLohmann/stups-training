@@ -8,7 +8,7 @@ Folder Layout
 * slides: workshop slides
 * levels: one folder per workshop level, each level contains the solution for the previous one
 
-Workshop Contraints
+Workshop Constraints
 ===================
 
 2 hours
