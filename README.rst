@@ -11,11 +11,10 @@ Folder Layout
 Workshop Constraints
 ===================
 
-2 hours
-max. 20 people (probably max 12 because of room)
-pairs of two work together
-needed:
-room with beamer, tables and network connection for everyone
+* 3 hours
+* max. 20 people (probably max 12 because of room)
+* pairs of two work together
+* room with beamer, whiteboard (or flipchart), tables and network connection for everyone
 
 Workshop Contents
 =================
