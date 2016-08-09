@@ -30,7 +30,8 @@
       <p><a href="https://github.bus.zalan.do/stups/stups-training">https://github.bus.zalan.do/stups/stups-training</a>
       </p>
     </section>
-    	<section>
+    <section>
+      <section>
         <h1>Preparation</h1>
         <ul>
             <li><a href="https://zack.zalando.net/#/role-request?selected=cn%3DPowerUser,ou%3DRoles,ou%3Daws-mentoring-187355903146,ou%3DAWS,ou%3Dapps">Request PowerUser access to mentoring AWS account</a></li>
@@ -38,6 +39,22 @@
             <li>Pairs of two get one name (small piece of paper)</li>
         </ul>
       </section>
+      <section>
+        <h1>Request access</h1>
+        <p>ZACK PowerUser for mentoring</p>
+      </section>
+      <section>
+        <h1>Install STUPS CLI tools</h1>
+        <pre><code data-trim data-noescape>
+          sudo pip3 install -U stups
+          stups configure stups.zalan.do
+        </code></pre>
+      </section>
+      <section>
+        <h1>Install JDK 8</h1>
+        <p>OpenJDK will do</p>
+      </section>
+    </section>
     <section>
        <section>
         <h1>Level 00: Dockerfile</h1>
@@ -59,16 +76,6 @@
       <section>
         <h1>Level 01: Pier One</h1>
         <p>Build and push the Docker image</p>
-      </section>
-      <section>
-        <h1>Request access</h1>
-        <p>ZACK PowerUser for mentoring</p>
-      </section>
-      <section>
-        <pre><code data-trim data-noescape>
-          sudo pip3 install -U stups
-          stups configure stups.zalan.do
-        </code></pre>
       </section>
       <section>
         <ul>
@@ -110,16 +117,12 @@
     </section>
      <section>
       <section>
-        <h1>Level 04: Deploy</h1>
+        <h1>Level 04: Deploy &amp; Test</h1>
         <p></p>
       </section>
       <section>
-      	<p></p>
-      </section>
-      <section>
-        <ul>
-
-        </ul>
+      	<p>senza create</p>
+      	<p>curl -H "Authorization: Bearer $(zign tok)" https://...mentoring.zalan.do</p>
       </section>
     </section>
      <section>
@@ -128,12 +131,9 @@
         <p>Piu & docker exec</p>
       </section>
       <section>
-      	<p></p>
-      </section>
-      <section>
-        <ul>
-
-        </ul>
+      	<p>senza instances ...</p>
+      	<p>piu ...</p>
+      	<p>docker exec -it taupageapp bash</p>
       </section>
     </section>
   </div>
