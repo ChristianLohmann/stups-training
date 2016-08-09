@@ -10,4 +10,4 @@ Defaults:
 
 * Start: 1
 * End: 10
-* File: `./SUPTS_cheatsheet.svg`
+* File: `./STUPS_cheatsheet.svg`
