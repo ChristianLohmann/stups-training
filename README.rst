@@ -42,9 +42,3 @@ Workshop Timeline
 * 15m Deploy and test (curl)
 * 15m Piu & docker exec / AWS internals
 * 15m wrap up
-
-
-TODOs:
-* Prepare Java app Java project with OAuth rest server without Dockerfile
-* Slides (in git)
-* Handout
