@@ -7,7 +7,10 @@ from clickclick import Action, info
 def shorten_email(email):
     tokenized = email.split('@')
     names = tokenized[0].split('.')
-    return names[0][0] + ''.join(names[1:])
+    return {
+        'ad_name': names[0][0] + ''.join(names[1:]),
+        'email': email
+    }
 
 
 def fetch_mentoring_members(token):
@@ -30,23 +33,24 @@ def main(file, token):
         if has_header:
             next(csv_file)  # skip header row
         data = (str(row[0]) for row in csv_file)
-        shortened = (shorten_email(email) for email in data)
+        pairs = (shorten_email(email) for email in data)
         members = fetch_mentoring_members(token)
         print(', '.join(members))
         found = False
         non_mentoring_members = []
-        for newbie in shortened:
-            info('Checking newbie {}'.format(newbie))
+        for newbie in pairs:
+            info('Checking newbie {}'.format(newbie['ad_name']))
             for member in members:
-                if newbie.startswith(member):
+                if newbie['ad_name'].startswith(member):
                     found = True
                     break
             if not found:
-                non_mentoring_members.append(newbie)
+                non_mentoring_members.append(newbie['email'])
             else:
                 found = False
         print('List of newbies not in mentoring team yet:')
         print('\n'.join(non_mentoring_members))
+
 
 if __name__ == '__main__':
     main()
