@@ -35,7 +35,6 @@ def main(file, token):
         data = (str(row[0]) for row in csv_file)
         pairs = (shorten_email(email) for email in data)
         members = fetch_mentoring_members(token)
-        print(', '.join(members))
         found = False
         non_mentoring_members = []
         for newbie in pairs:
