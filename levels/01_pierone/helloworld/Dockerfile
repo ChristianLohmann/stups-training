@@ -1,4 +1,4 @@
-FROM registry.opensource.zalan.do/stups/openjdk:8-29
+FROM registry.opensource.zalan.do/stups/openjdk:8-30
 
 COPY target/helloworld-1.0.0-SNAPSHOT.jar /helloworld.jar
 COPY target/scm-source.json /
