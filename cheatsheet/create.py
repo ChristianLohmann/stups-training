@@ -15,7 +15,7 @@ def fetch_pokemon(number):
     r.raise_for_status()
     encoded_img = b64encode(r.content)
     return {
-        'pokemonName': name.title(),
+        'pokemonName': str.lower(name.title()),
         'pokemonImage': encoded_img
     }
 

@@ -9,3 +9,9 @@ Register a new application in Kio and configure the mint bucket to get OAuth cre
 * Wait for OAuth credentials to appear in the S3 bucket
 
 NOTE: the mentoring account ID is 187355903146.
+
+TODO
+====
+
+* double-check mint-bucket names of those who just have powerUser role of mentoring account
+
