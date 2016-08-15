@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>reveal.js</title>
+  <title>STUPS Workshop</title>
 
   <link rel="stylesheet" href="vendor/css/reveal.css">
   <link rel="stylesheet" href="vendor/css/theme/solarized.css">
@@ -19,7 +19,6 @@
 			link.type = 'text/css';
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'vendor/css/print/pdf.css' : 'vendor/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
-
   </script>
 </head>
 <body>
@@ -34,55 +33,157 @@
       <section>
         <h1>Preparation</h1>
         <ul>
-            <li><a href="https://zack.zalando.net/#/role-request?selected=cn%3DPowerUser,ou%3DRoles,ou%3Daws-mentoring-187355903146,ou%3DAWS,ou%3Dapps">Request PowerUser access to mentoring AWS account</a></li>
-            <li><a href="http://docs.stups.io/en/latest/user-guide/local-setup.html">Install STUPS CLI tools</a>, Docker and JDK 8</li>
-            <li>Pairs of two get one name (small piece of paper)</li>
+          <li><a
+              href="https://zack.zalando.net/#/role-request?selected=cn%3DPowerUser,ou%3DRoles,ou%3Daws-mentoring-187355903146,ou%3DAWS,ou%3Dapps">Request
+            PowerUser access to mentoring AWS account</a></li>
+          <li><a href="http://docs.stups.io/en/latest/user-guide/local-setup.html">Install STUPS CLI tools</a>,
+            <a href="https://www.docker.com/products/overview">Docker</a>
+            and <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK 8</a>
+          </li>
+          <li>Pairs of two get one application name (on a piece of paper)</li>
         </ul>
       </section>
-      <section>
-        <h1>Request access</h1>
-        <p>ZACK PowerUser for mentoring</p>
+      <section data-markdown>
+        <script type="text/template">
+          ## AWS account access
+
+          1. Go to [zack.zalando.net](https://zack.zalando.net)
+          2. Navigate to Request Role -> AWS -> mentoring -> PowerUser
+          3. Provide a reason "I take part in STUPS Workshop", click Request.
+          4. Wait.
+        </script>
       </section>
-      <section>
-        <h1>Install STUPS CLI tools</h1>
-        <pre><code data-trim data-noescape>
-          sudo pip3 install -U stups
-          stups configure stups.zalan.do
-        </code></pre>
+      <section data-markdown>
+        <script type="text/template">
+          ## Install STUPS CLI tools
+          <pre><code data-trim data-noescape>
+          $ sudo pip3 install -U stups
+          $ stups configure stups.zalan.do
+          </code></pre>
+        </script>
       </section>
-      <section>
-        <h1>Install JDK 8</h1>
-        <p>OpenJDK will do</p>
+      <section data-markdown>
+        <script type="text/template">
+          ## Install JDK 8
+
+          Any of the following:
+
+          * <a href="http://openjdk.java.net/">OpenJDK</a>
+          * <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle JDK</a>
+        </script>
       </section>
     </section>
     <section>
-       <section>
-        <h1>Level 00: Dockerfile</h1>
-        <p>Create a Dockerfile for the Java app</p>
+      <section data-markdown>
+        <script type="text/template">
+        # Level 00: Dockerfile
+
+        Create a Dockerfile for the Java app
+        </script>
       </section>
-        <section>
-        <h1>Docker</h1>
-        <p>Docker as packaging format</p>
+      <section data-markdown>
+        <script type="text/template">
+          ## Docker
+
+          * Docker as packaging format
+          * better than OS packages
+        </script>
       </section>
-      <section>
-        <ul>
-          <li><a href="http://docs.stups.io/en/latest/appendix/docker-base-images.html">OpenJDK base image</a></li>
-          <li><a href="http://docs.stups.io/en/latest/user-guide/application-development.html#scm-source-json">scm-source.json</a>
-          </li>
-        </ul>
+      <section data-markdown>
+        <script type="text/template">
+          ## Traceability
+
+          * When we see a docker image, we need to know exactly from which source code it was built.
+          * Instead of manually controlled versioning we use git commit hashes
+          * /scm-source.json
+
+          ```json
+          {
+            "revision": "1ccabb2c73adad0eb3e2b54ab818e64894bce575",
+            "url": "git@github.bus.zalan.do:die-antwoord/i-fink-your-pretty.git",
+            "status": "",
+            "author": "yovisser"
+          }
+          ```
+          * [Documentation](http://docs.stups.io/en/latest/user-guide/application-development.html#scm-source-json)
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## OpenJDK base image
+
+          * Includes Zalando CA
+          * Is maintained up-to-date for latest vulnerability reports
+
+          To find out recent versions of the OpenJDK base image, use:
+
+          ```
+          $ pierone tags --url registry.opensource.zalan.do stups openjdk
+          ```
+
+          * [Documentation](http://docs.stups.io/en/latest/appendix/docker-base-images.html)
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## Building the docker image
+
+          ```
+          $ docker build .
+          ```
+        </script>
       </section>
     </section>
     <section>
       <section>
         <h1>Level 01: Pier One</h1>
-        <p>Build and push the Docker image</p>
+        <p>Publish the Docker image</p>
       </section>
-      <section>
-        <ul>
-          <li>docker build</li>
-          <li>pierone login</li>
-          <li>docker push to mentoring space</li>
-        </ul>
+      <section data-markdown>
+        <script type="text/template">
+          ## Build with the correct tag
+
+          * This is necessary to be able to publish the image in our proprietary docker image registry.
+          * Image tag has format:
+
+          ```
+          REGISTRY_URL/TEAM/APP_NAME:VERSION
+          ```
+
+          * In our case:
+
+          ```
+          $ docker build -t pierone.stups.zalan.do/mentoring/APP_NAME:VERSION
+          ```
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## Authenticate with the registry
+
+          ```
+          $ pierone login --url pierone.stups.zalan.do
+          ```
+
+          * This retrieves an OAuth 2.0 access token and puts it into `~/.docker/config.json`
+          * Now we are ready to `docker push`
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## Push the docker image
+
+          ```
+          $ docker push pierone.stups.zalan.do/mentoring/APP_NAME:VERSION
+          ```
+
+          After a successful push, check if the image is there:
+
+          ```
+          $ pierone tags --url pierone.stups.zalan.do mentoring APP_NAME
+          ```
+
+        </script>
       </section>
     </section>
     <section>
@@ -90,23 +191,94 @@
         <h1>Level 02: Kio</h1>
         <p>Register your app in Kio</p>
       </section>
-      <section>
-        <ul>
-          <li><a href="https://yourturn.stups.zalan.do/">YOUR TURN</a></li>
-          <li>Kio CLI</li>
-          <li>mint bucket</li>
-        </ul>
+      <section data-markdown>
+        <script type="text/template">
+          ## Kio — application registry
+
+          * Every application that we deploy has to be registered.
+          * Application registration also creates a service user (robot user) that is allowed to request access tokens
+          to authenticate to call other applications.
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## Mint — credential rotation service
+
+          * Regularly generates random OAuth 2.0 credentials and distributes them via S3.
+          * Credentials are:
+            * ClientID+ClientSecret
+            * Username+Password
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## YOURTURN
+
+          * Kio and Mint expose RESTful APIs
+          * Yourturn is a frontend for Kio and Mint
+
+          [yourturn.stups.zalan.do](https://yourturn.stups.zalan.do)
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          1. Go to the Yourturn UI
+          2. Create a new application, fill out the required fields.
+          3. In a created application, Access Control, provide Mint Bucket name.
+
+          Finding out the Mint Bucket name:
+
+          ```
+          $ mai login mentoring-PowerUser
+          $ aws s3api list-buckets | jq ".Buckets[].Name" | grep mint
+          ```
+        </script>
       </section>
     </section>
     <section>
       <section>
         <h1>Level 03: Senza</h1>
-        <p>Create Senza definition</p>
+        <p>Deploying the application to the Cloud</p>
       </section>
-      <section>
-      	<p></p>
+      <section data-markdown>
+        <script type="text/template">
+          ## Deployment
+
+          What do we need to deploy an application?
+
+          * Computer (EC2 instance)
+          * Domain name record (Route 53)
+          * Reverse proxy (Elastic Load Balancer)
+          * Firewall rules (Security Group)
+          * Access permissions (IAM Role)
+          * Autoscaling Group with rules
+        </script>
       </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## EC2 Instance — Taupage
+
+          * Taupage is an AMI (Amazon Machine Image) — a VM image that serves as a blueprint for all app deployments in Zalando.
+          * Taupage is based in Ubuntu.
+          * Taupage runs one docker container (the one that we built and published in step 1).
+          * Taupage is controlled by UserData in a special format (YAML document).
+        </script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          ## Senza
+
+          * Senza is a CLI that facilitates the creation of all these resources and manages existing deployments.
+          * Each deployment is implemented as a CloudFormation stack.
+          * CloudFormation allows us to manage groups of AWS resources as a whole, letting us create and delete them.
+          * CloudFormation template is a JSON document.
+          * Senza template is a wrapper aroud CloudFormation template, it uses YAML format for brevity and legibility.
+        </script>
+      </section>
+
       <section>
+        <p>TODO</p>
+
         <ul>
           <li>immutable stack</li>
           <li>senza init</li>
@@ -115,25 +287,54 @@
         </ul>
       </section>
     </section>
-     <section>
+    <section>
       <section>
         <h1>Level 04: Deploy &amp; Test</h1>
-        <p></p>
+        <p>Trigger the deployment</p>
       </section>
       <section>
-      	<p>senza create</p>
-      	<p>curl -H "Authorization: Bearer $(zign tok)" https://...mentoring.zalan.do</p>
+        <p>senza create</p>
+        <p>senza traffic</p>
+        <p>curl -H "Authorization: Bearer $(zign tok)" https://...mentoring.zalan.do</p>
       </section>
     </section>
-     <section>
+    <section>
       <section>
-        <h1>Level 05: SSH Access</h1>
-        <p>Piu & docker exec</p>
+        <h1>Level 05: Troubleshooting</h1>
       </section>
       <section>
-      	<p>senza instances ...</p>
-      	<p>piu ...</p>
-      	<p>docker exec -it taupageapp bash</p>
+        <p align="left">If something goes wrong, there might be manual investigation necessary. Here are some possibilities:</p>
+        <ul>
+          <li>Look in AWS console</li>
+          <li>SSH into the machine</li>
+        </ul>
+        <p>senza instances ...</p>
+        <p>piu ...</p>
+        <p>docker exec -it taupageapp bash</p>
+      </section>
+      <section>
+        <h3>AWS Console</h3>
+        <p>Open the console:</p>
+        <p><a href="https://aws.zalando.net">aws.zalando.net</a></p>
+        <ol>
+          <li>Go to <b>CloudFormation</b>, find your application's stack, click on it.</li>
+          <li>Check the <b>Events</b></li>
+        </ol>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h1>Wrap-up</h1>
+        <p>Deploying to AWS is wasy with STUPS</p>
+      </section>
+      <section>
+        <ol>
+          <li>Build and push the Docker image</li>
+          <li>Register your app in Kio</li>
+          <li>Create Senza definition</li>
+          <li>Trigger the deployment</li>
+          <li><i>[Optional]</i> Troubleshoot using AWS Console and SSH</li>
+        </ol>
       </section>
     </section>
   </div>
@@ -155,7 +356,6 @@
 					{ src: 'vendor/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
-
 </script>
 </body>
 </html>
