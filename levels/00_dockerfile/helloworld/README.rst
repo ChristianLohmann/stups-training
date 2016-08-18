@@ -18,4 +18,5 @@ Testing the OAuth secured endpoint:
 
     $ sudo pip3 install -U httpie-zign
     $ echo '{"default_options": ["--auth-type=zign"]}' > ~/.httpie/config.json
+    $ zign token
     $ http -a test: http://localhost:8080/hello
